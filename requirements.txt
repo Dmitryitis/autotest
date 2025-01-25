@@ -1,7 +1,9 @@
-pytest
+pytest==8.3.4
 playwright
 requests
 qase-pytest==4.2.0
 python-dotenv
 testit-cli
 testit-adapter-pytest
+qaseio==3.2.1
+pytest-playwright==0.6.2

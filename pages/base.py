@@ -10,13 +10,22 @@ class Base:
         return self.page.goto(f"{host.get_base_url()}{uri}", wait_until='domcontentloaded')
 
     def click(self, locator: str) -> None: #клик, при необходимости сам делает скролл к нужному элементу
-        self.page.click(locator)
+        self.page.click(locator, timeout=5000)
+    
+    def click_enter(self) -> None: 
+        self.page.keyboard.down('Enter')
 
     def input(self, locator: str, data: str) -> None: #ввод в поле
-        self.page.locator(locator).fill(data)
+        self.page.locator(locator).fill(data,force=True)
+    
+    def blur(self, locator):
+        self.page.locator(locator).blur(timeout=5000)
 
     def get_text(self, locator: str, index: int) -> str: #достаем текст, если локатор один, то в аргумент прокидываем значение 0
         return self.page.locator(locator).nth(index).text_content()
+    
+    def get_text_from_input(self, locator):
+        return self.page.locator(locator).input_value(timeout=5000)
 
     def click_element_by_index(self, locator: str, index: int) -> None: #находим элемент по индексу и кликаем
         self.page.locator(locator).nth(index).click()

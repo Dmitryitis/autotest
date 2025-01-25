@@ -12,12 +12,11 @@ def pytest_addoption(parser):
     parser.addoption('--slow', action='store', default=200, help='Choose slow_mo for robot action')
     parser.addoption('--t', action='store', default=60000, help='Choose timeout')
     parser.addoption('--l', action='store', default='ru-RU', help='Choose locale')
-    # parser.addini('qs_to_api_token', default=os.getenv("QASE_TOKEN"), help='Qase app token')
 
 
 
 @pytest.fixture(scope='class')
-def browser(request) -> Page:
+def browser(request):
     playwright = sync_playwright().start()
     if request.config.getoption("bn") == 'remote_chrome':
         browser = get_remote_chrome(playwright, request)
@@ -42,28 +41,28 @@ def browser(request) -> Page:
     playwright.stop()
 
 
-def get_firefox_browser(playwright, request) -> Browser:
+def get_firefox_browser(playwright, request):
     return playwright.firefox.launch(
         headless=request.config.getoption("h"),
         slow_mo=request.config.getoption("slow"),
     )
 
 
-def get_chrome_browser(playwright, request) -> Browser:
+def get_chrome_browser(playwright, request):
     return playwright.chromium.launch(
         headless=request.config.getoption("h"),
         slow_mo=request.config.getoption("slow"),
         args=['--start-maximized']
     )
 
-def get_remote_chrome(playwright, request) -> Browser:
+def get_remote_chrome(playwright, request):
     return playwright.chromium.launch(
         headless=True,
         slow_mo=request.config.getoption("slow")
     )
 
 
-def get_context(browser, request, start) -> BrowserContext:
+def get_context(browser, request, start):
     if start == 'local':
         context = browser.new_context(
             no_viewport=True,
@@ -72,7 +71,7 @@ def get_context(browser, request, start) -> BrowserContext:
         context.set_default_timeout(
             timeout=request.config.getoption('t')
         )
-        # context.add_cookies([{'url': 'https://example.ru', 'name': 'ab_test', 'value': 'd'}]) добавляем куки, если нужны
+        # context.add_cookies([{'url': 'https://example.ru', 'name': 'ab_test', 'value': 'd'}])
         return context
 
     elif start == 'remote':
@@ -83,7 +82,7 @@ def get_context(browser, request, start) -> BrowserContext:
         context.set_default_timeout(
             timeout=request.config.getoption('t')
         )
-        # context.add_cookies([{'url': 'https://example.ru', 'name': 'ab_test', 'value': 'd'}]) добавляем куки, если нужны
+        # context.add_cookies([{'url': 'https://example.ru', 'name': 'ab_test', 'value': 'd'}])
         return context
 
 
