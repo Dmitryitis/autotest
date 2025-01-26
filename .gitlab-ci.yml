@@ -7,5 +7,5 @@ run_tests:
   before_script:
   - pip install -r requirements.txt
   script:
-    - pytest --tmsUrl=${TMS_URL} --tmsPrivateToken=${TMS_PRIVATE_TOKEN} --tmsProjectId=${TMS_PROJECT_ID} --tmsConfigurationId=${TMS_CONFIGURATION_ID} --tmsCertValidation=${TMS_CERT_VALIDATION} --tmsAdapterMode=${TMS_ADAPTER_MODE}
+    - pytest --bn=remote-chrome --tmsUrl=${TMS_URL} --tmsPrivateToken=${TMS_PRIVATE_TOKEN} --tmsProjectId=${TMS_PROJECT_ID} --tmsConfigurationId=${TMS_CONFIGURATION_ID} --tmsCertValidation=${TMS_CERT_VALIDATION} --tmsAdapterMode=${TMS_ADAPTER_MODE}
 
