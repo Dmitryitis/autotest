@@ -2,11 +2,10 @@ stages:
   - autotest
 
 run_tests:
-  image: python:3.10
+  image: mcr.microsoft.com/playwright/python:v1.41.0-jammy
   stage: autotest
   before_script:
   - pip install -r requirements.txt
-  - playwright install --with-deps
   script:
     - pytest --testit --bn='remote_chrome' --tmsUrl=${TMS_URL} --tmsPrivateToken=${TMS_PRIVATE_TOKEN} --tmsProjectId=${TMS_PROJECT_ID} --tmsConfigurationId=${TMS_CONFIGURATION_ID} --tmsCertValidation=${TMS_CERT_VALIDATION} --tmsAdapterMode=${TMS_ADAPTER_MODE}
 
