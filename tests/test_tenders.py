@@ -2,7 +2,6 @@ import pytest
 import testit
 from pages.tenders import TendersPage
 
-@pytest.mark.smoke
 class TestTendersPage:
     @testit.workItemIds([43])
     @testit.displayName('test_input_notice')
