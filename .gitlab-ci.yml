@@ -6,6 +6,7 @@ run_tests:
   stage: autotest
   before_script:
   - pip install -r requirements.txt
+  - python -m playwright install --with-deps
   script:
     - pytest --testit --tmsUrl=${TMS_URL} --tmsPrivateToken=${TMS_PRIVATE_TOKEN} --tmsProjectId=${TMS_PROJECT_ID} --tmsConfigurationId=${TMS_CONFIGURATION_ID} --tmsCertValidation=${TMS_CERT_VALIDATION} --tmsAdapterMode=${TMS_ADAPTER_MODE}
 
