@@ -2,7 +2,7 @@ stages:
   - autotest
 
 run_tests:
-  image: mcr.microsoft.com/playwright/python:v1.41.0-jammy
+  image: mcr.microsoft.com/playwright/python:v1.49.1-jammy
   stage: autotest
   before_script:
   - pip install -r requirements.txt
