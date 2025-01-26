@@ -2,10 +2,11 @@ stages:
   - autotest
 
 run_tests:
-  image: mcr.microsoft.com/playwright/python:v1.49.1-noble
+  image: python:3.10
   stage: autotest
   before_script:
   - pip install -r requirements.txt
+  - playwright install --with-deps
   script:
     - pytest --testit --tmsUrl=${TMS_URL} --tmsPrivateToken=${TMS_PRIVATE_TOKEN} --tmsProjectId=${TMS_PROJECT_ID} --tmsConfigurationId=${TMS_CONFIGURATION_ID} --tmsCertValidation=${TMS_CERT_VALIDATION} --tmsAdapterMode=${TMS_ADAPTER_MODE}
 
