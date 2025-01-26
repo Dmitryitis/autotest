@@ -8,3 +8,9 @@ class TestTendersPage:
     def test_input_notice(self, browser):
         tender = TendersPage(browser)
         tender.check_input_notice()
+    
+    @testit.workItemIds([46])
+    @testit.displayName('test_check_filter_region')
+    def test_check_filter_region(self, browser):
+        tender = TendersPage(browser)
+        tender.check_filter_by_region()

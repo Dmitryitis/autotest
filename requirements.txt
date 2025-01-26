@@ -6,3 +6,4 @@ python-dotenv
 testit-adapter-pytest
 testit-api-client==5.0.0
 qaseio==3.2.1
+junitxml==0.7

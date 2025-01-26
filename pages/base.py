@@ -7,7 +7,7 @@ class Base:
         self.page = page
 
     def open(self, uri) -> Response | None:
-        return self.page.goto(f"{host.get_base_url()}{uri}", wait_until='domcontentloaded')
+        return self.page.goto(f"{host.get_base_url()}{uri}", wait_until='domcontentloaded', timeout=10000)
 
     def click(self, locator: str) -> None: #клик, при необходимости сам делает скролл к нужному элементу
         self.page.click(locator, timeout=5000)
