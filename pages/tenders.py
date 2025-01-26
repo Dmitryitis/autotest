@@ -45,3 +45,21 @@ class TendersPage(Base):
 
         text_region= self.get_text(TendersLocators.CHOOSE_REGION_BUTTON, 0).strip()
         self.assertions.check_equals(text_region, 'в регионе Алтайский край', '')
+
+    def check_select_sort(self):
+        self.open('tenders')
+
+        self.assertions.check_URL('tenders', "Wrong URL")
+
+        self.click(TendersLocators.TENDER_SELECT_SORT)
+
+        self.assertions.check_presence(TendersLocators.TENDER_SELECT_SORT_DROPDOWN, '')
+        text_sort_choose = self.get_text(TendersLocators.TENDER_SELECT_SORT_BUTTON, 2).split()
+
+        self.click_element_by_index(TendersLocators.TENDER_SELECT_SORT_BUTTON, 2)
+
+        self.assertions.check_absence(TendersLocators.TENDER_SELECT_SORT_DROPDOWN, '')
+
+        text_sort = self.get_text(TendersLocators.TENDER_SELECT_SORT, 0).split()
+
+        self.assertions.check_equals(text_sort, text_sort_choose, '')

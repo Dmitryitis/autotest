@@ -14,3 +14,9 @@ class TestTendersPage:
     def test_check_filter_region(self, browser):
         tender = TendersPage(browser)
         tender.check_filter_by_region()
+
+    @testit.workItemIds([45])
+    @testit.displayName('test_check_sort_filter')
+    def test_check_sort_filter(self, browser):
+        tender = TendersPage(browser)
+        tender.check_select_sort()

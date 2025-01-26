@@ -33,3 +33,26 @@ class NewsPage(Base):
         self.open('news')
 
         self.assertions.check_URL('news', "Wrong URL")
+
+        text_link_bisness = self.get_text(NewsLocators.NEWS_ANCHOR_LINK, 0).split()
+        text_link_news = self.get_text(NewsLocators.NEWS_ANCHOR_LINK,1).split()
+
+        self.click(NewsLocators.NEWS_TAB_MAIN)
+
+        self.page.wait_for_timeout(2000)
+
+        text_active_anchor = self.get_text(NewsLocators.NEWS_ANCHOR_LINK_ACTIVE, 0).split()
+        text_media_badge = self.get_text(NewsLocators.NEWS_MEDIA_BADGE, 0).split()
+        self.assertions.check_equals(text_link_bisness, text_active_anchor, '')
+        self.assertions.check_equals(text_link_bisness, text_media_badge, '')
+
+        self.click_element_by_index(NewsLocators.NEWS_ANCHOR_LINK, 0)
+
+        self.page.wait_for_timeout(2000)
+
+        text_active_anchor = self.get_text(NewsLocators.NEWS_ANCHOR_LINK_ACTIVE, 0).split()
+        text_media_badge = self.get_text(NewsLocators.NEWS_MEDIA_BADGE, 0).split()
+        self.assertions.check_equals(text_link_news, text_active_anchor, '')
+        self.assertions.check_equals(text_link_news, text_media_badge, '')
+
+        self.click(NewsLocators.NEWS_TAB_NEW)

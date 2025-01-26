@@ -11,3 +11,6 @@ class TendersLocators:
     COUNT_FOUND_TENDERS = '//div[@class="search__legend"]'
     CHOOSE_REGION_BUTTON = '//button[@class="mark-ctrl"]'
     ELEMENT_REGION = '//button[@class="dropdown__button"]'
+    TENDER_SELECT_SORT = '//button[@class="select__body"]'
+    TENDER_SELECT_SORT_BUTTON = '//button[@class="select__button"]'
+    TENDER_SELECT_SORT_DROPDOWN = '//div[@class="select__dropdown"]'
