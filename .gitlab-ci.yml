@@ -8,5 +8,5 @@ run_tests:
   - pip install -r requirements.txt
   - playwright install --with-deps
   script:
-    - pytest --testit --tmsUrl=${TMS_URL} --tmsPrivateToken=${TMS_PRIVATE_TOKEN} --tmsProjectId=${TMS_PROJECT_ID} --tmsConfigurationId=${TMS_CONFIGURATION_ID} --tmsCertValidation=${TMS_CERT_VALIDATION} --tmsAdapterMode=${TMS_ADAPTER_MODE}
+    - pytest --testit --bn='remote_chrome' --tmsUrl=${TMS_URL} --tmsPrivateToken=${TMS_PRIVATE_TOKEN} --tmsProjectId=${TMS_PROJECT_ID} --tmsConfigurationId=${TMS_CONFIGURATION_ID} --tmsCertValidation=${TMS_CERT_VALIDATION} --tmsAdapterMode=${TMS_ADAPTER_MODE}
 
