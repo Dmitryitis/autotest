@@ -30,6 +30,9 @@ class Assertions(Base):
     def check_equals(self, actual, expected, msg):
         assert actual == expected, msg
 
+    def check_not_equals(self, actual, expected, msg):
+        assert actual != expected, msg
+
 
     def check_is_less_then(self, first, second, msg):
         assert first < second, msg
@@ -44,9 +47,13 @@ class Assertions(Base):
         assert f"{uri}" in self.page.url, msg
 
 
-    def check_box_activated(self, locator, msg): #проверка что чек бокс поставлен
-        loc = self.page.locator(locator)
+    def check_box_activated(self, locator,index, msg): #проверка что чек бокс поставлен
+        loc = self.page.locator(locator).nth(index)
         expect(loc).to_be_checked(), msg
+    
+    def check_box_not_activated(self, locator,index, msg): #проверка что чек бокс поставлен
+        loc = self.page.locator(locator).nth(index)
+        expect(loc).not_to_be_checked(), msg
 
 
     def element_disabled(self, locator, msg): #веб элемент отключен
